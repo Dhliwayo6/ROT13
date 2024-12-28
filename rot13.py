@@ -1,17 +1,34 @@
-details = "pythoN"
+def main():
+    details = input("Details to be encrypted: ")
+    print(encrypt(details))
 
-alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+def encrypt(details: str) -> str:
 
-new = ""
+    """
+    Encrypt user input using rot13 technique.
 
-for letter in details:
-    if letter in alphabet:
-        if alphabet.index(letter) < 13:
-            new += alphabet[alphabet.index(letter) + 13]
+    :param details: user input 
+    :type details: str
+    :return : an encrypted string
+    :rtype: str
+    """
+
+    alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+    encrypted = ""
+
+    for letter in details:
+        if letter in alphabet:
+            if alphabet.index(letter) < 13:
+                encrypted += alphabet[alphabet.index(letter) + 13]
+            else:
+                encrypted += alphabet[alphabet.index(letter) - 13]
+
         else:
-            new += alphabet[alphabet.index(letter) - 13]
+            encrypted += letter
 
+    return encrypted
 
-
-print(new)
+if __name__ == "__main__":
+    main()
 
